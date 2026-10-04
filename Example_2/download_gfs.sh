@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is written by Eric J. Drewitz
+
 # Exit immediately if a command exits with a non-zero status
 set -e
 
