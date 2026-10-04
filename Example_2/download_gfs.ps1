@@ -144,15 +144,15 @@ $CURRENT_DIR = Get-Location
 
 # Starts our different jobs in parallel
 $Proc1 = Start-Process -FilePath "wxdata-gfs" `
-        -ArgumentList "0p25 latest -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 1000 -l 850 -l 700 -l 500 -l 250 -cdir $CURRENT_DIR\GFS0P25\Primary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\GFS0P25\Primary\NETCDF" `
+        -ArgumentList "0p25 latest -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 1000 -l 850 -l 700 -l 500 -l 250 -cdir $CURRENT_DIR\Example_2\GFS0P25\Primary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\Example_2\GFS0P25\Primary\NETCDF" `
         -PassThru `
         -NoNewWindow
 $Proc2 = Start-Process -FilePath "wxdata-gfs" `
-        -ArgumentList "0p25 latest -c secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 875 -l 775 -l 675 -l 575 -l 475 -s google -cdir $CURRENT_DIR\GFS0P25\Secondary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\GFS0P25\Secondary\NETCDF" `
+        -ArgumentList "0p25 latest -c secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 875 -l 775 -l 675 -l 575 -l 475 -s google -cdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\NETCDF" `
         -PassThru `
         -NoNewWindow
 $Proc3 = Start-Process -FilePath "wxdata-gfs" `
-        -ArgumentList "0p50 latest -v temperature -v relative_humidity -l 2 -lt height_above_ground -s aws -cdir $CURRENT_DIR\GFS0P50\GRIB2  --netcdf True --ncdir $CURRENT_DIR\GFS0P50\NETCDF" `
+        -ArgumentList "0p50 latest -v temperature -v relative_humidity -l 2 -lt height_above_ground -s aws -cdir $CURRENT_DIR\Example_2\GFS0P50\GRIB2  --netcdf True --ncdir $CURRENT_DIR\Example_2\GFS0P50\NETCDF" `
         -PassThru `
         -NoNewWindow
 
