@@ -1,0 +1,20 @@
+# 1. TELL LINGUIST TO IGNORE ALL MARKDOWN AND DOCS IN THE STATS
+*.md linguist-documentation
+README.md linguist-documentation
+docs/** linguist-documentation
+
+# 2. Force GitHub to count your automation scripts
+*.bat linguist-detectable linguist-language=Batchfile
+*.cmd linguist-detectable linguist-language=Batchfile
+*.ps1 linguist-detectable linguist-language=PowerShell
+*.psm1 linguist-detectable linguist-language=PowerShell
+*.sh linguist-detectable linguist-language=Shell
+*.py linguist-detectable linguist-language=Python
+
+# 3. Code formatting configurations
+*.py    text diff=python
+*.bat   text diff=batch
+*.cmd   text diff=batch
+*.ps1   text diff=powershell
+*.psm1  text diff=powershell
+*.sh    text diff=shell
