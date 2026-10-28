@@ -1,4 +1,4 @@
-<img src="https://github.com/edrewitz/WxData/blob/main/icons/wxdata_logo.png.png?raw=true" width="400" height="250" alt="Alt text" />
+<img src="https://github.com/edrewitz/WxData/blob/main/icons/wxdata_logo.png.png?raw=true" width="400" height="400" alt="Alt text" />
 
 
 # WxData-Shell
