@@ -45,7 +45,7 @@ wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir $CurrentPath/Example_1
 # Run your Python scripts explicitly targeting the environment's binary
 Write-Host "Running Python scripts..." -ForegroundColor Green
 
-# Example 1: Running our script to create our GFS 850mb forecast graphics
+# Running our script to create our GFS 850mb forecast graphics
 & $TargetPython "C:\Users\drewi\WxData-Shell\Example_1\gfs_graphics.py"
 
 Write-Host "--- Pipeline Execution Completed ---" -ForegroundColor Cyan
