@@ -10,6 +10,7 @@ set -e
 
 # Define environment name
 ENV_NAME="gfs_850mb_temperature"
+current_dir=$(pwd)
 
 echo "========================================="
 echo "Creating new Conda environment: $ENV_NAME"
@@ -38,7 +39,7 @@ pip uninstall wxdata
 echo "========================================="
 echo "Installing wxdata package..."
 echo "========================================="
-pip install git+"https://github.com/edrewitz/WxData.git@development"
+pip install git+"https://github.com/edrewitz/WxData.git"
 
 echo "========================================="
 echo "Setup complete! Environment '$ENV_NAME' is ready."
@@ -48,7 +49,7 @@ echo "========================================="
 # The following processes include
 
 # 1 - Downloading the latest GFS 0.25x0.25 Degree 850mb Temperature Forecast to GFS0P25/Temperature
-wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir GFS0P25/Temperature
+wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir $current_dir/GFS0P25/Temperature
 
 # 2 - Executing a Python script that ingests the data and creates a set of forecast graphics
-python gfs_graphics.py
+python $current_dir/gfs_graphics.py

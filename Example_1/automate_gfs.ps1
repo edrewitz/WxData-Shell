@@ -7,6 +7,7 @@
 $EnvName = "gfs_850mb_temperature"
 $PythonVersion = "3.12"
 
+$CurrentPath = (Get-Location).Path
 # Dynamically construct the path to the environment's Python executable
 $CondaHome = "$env:USERPROFILE\miniconda3" # Change to "anaconda3" if using full Anaconda
 $CondaExe = "$CondaHome\Scripts\conda.exe"
@@ -36,10 +37,10 @@ if (-not (Test-Path $TargetPython)) {
 
 # Pip install the package using the targeted environment's Python/pip
 Write-Host "Installing wxdata via pip..." -ForegroundColor Yellow
-& $TargetPython -m pip install git+"https://github.com/edrewitz/WxData.git@development"
+& $TargetPython -m pip install git+"https://github.com/edrewitz/WxData.git"
 
 # Downloading the latest GFS 0.25x0.25 Degree for 850mb temperature to the folder: GFS0P25/Temperature
-wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir GFS0P25/Temperature
+wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir $CurrentPath/Example_1/GFS0P25/Temperature
 
 # Run your Python scripts explicitly targeting the environment's binary
 Write-Host "Running Python scripts..." -ForegroundColor Green

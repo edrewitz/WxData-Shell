@@ -45,7 +45,7 @@ except Exception as e:
     pass
 
 # Defines our directory where the data is stored
-path_to_data = f"GFS0P25/Temperature"
+path_to_data = f"{script_dir}/GFS0P25/Temperature"
 
 # Ingest our data
 # This set of graphics will focus on CONUS and southern Canada (I'm based in CONUS)

@@ -35,7 +35,7 @@ pip uninstall wxdata
 echo "========================================="
 echo "Installing wxdata package..."
 echo "========================================="
-pip install git+"https://github.com/edrewitz/WxData.git@development"
+pip install git+"https://github.com/edrewitz/WxData.git"
 
 echo "========================================="
 echo "Setup complete! Environment '$ENV_NAME' is ready."
