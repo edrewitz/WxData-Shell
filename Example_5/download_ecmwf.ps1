@@ -165,5 +165,12 @@ $Processes | Wait-Process
 
 Write-Output "All downloads completed successfully."
 
+# Dynamically construct the path to the environment's Python executable
+$CondaHome = "$env:USERPROFILE\miniconda3" # Change to "anaconda3" if using full Anaconda
+$CondaExe = "$CondaHome\Scripts\conda.exe"
+if (-not (Test-Path $CondaHome)) {
+    # Fallback/Check if Conda is in the standard ProgramData location
+    $CondaHome = "$env:ALLUSERSPROFILE\miniconda3"
+}
 # Executes our Python plotting script
-& "C:\Users\drewi\miniconda3\envs\$ENV_NAME\python.exe" "$CURRENT_DIR\Example_5\ecmwf_500mb_gph.py"
+& "$CondaHome\envs\$ENV_NAME\python.exe" "$CURRENT_DIR\Example_5\ecmwf_500mb_gph.py"
