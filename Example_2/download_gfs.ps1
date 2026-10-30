@@ -132,7 +132,7 @@ try {
 Write-Output "========================================="
 Write-Output "Installing wxdata package..."
 Write-Output "========================================="
-pip install git+"https://github.com/edrewitz/WxData.git@development"
+pip install git+"https://github.com/edrewitz/WxData.git"
 
 Write-Output "========================================="
 Write-Output "Setup complete! Environment '$ENV_NAME' is ready."
@@ -148,7 +148,7 @@ $Proc1 = Start-Process -FilePath "wxdata-gfs" `
         -PassThru `
         -NoNewWindow
 $Proc2 = Start-Process -FilePath "wxdata-gfs" `
-        -ArgumentList "0p25 latest -c secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 875 -l 775 -l 675 -l 575 -l 475 -s google -cdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\NETCDF" `
+        -ArgumentList "0p25 latest -t secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 875 -l 775 -l 675 -l 575 -l 475 -s google -cdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\GRIB2 --netcdf True --ncdir $CURRENT_DIR\Example_2\GFS0P25\Secondary\NETCDF" `
         -PassThru `
         -NoNewWindow
 $Proc3 = Start-Process -FilePath "wxdata-gfs" `
