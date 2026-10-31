@@ -185,7 +185,7 @@ $Proc4 = Start-Process -FilePath "wxdata-gdps" -PassThru -NoNewWindow -ArgumentL
     "--ncdir $CURRENT_DIR\Example_6\GDPS\NETCDF"
 )
 
-Write-Host "Waiting for GFS downloads to complete..."
+Write-Host "Waiting for weather model downloads to complete..."
 
 # Track processes and hold the script until all three finish downloading
 $Processes = @($Proc1, $Proc2, $Proc3, $Proc4)
