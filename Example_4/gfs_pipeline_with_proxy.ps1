@@ -135,7 +135,7 @@ try {
 Write-Output "========================================="
 Write-Output "Installing wxdata package..."
 Write-Output "========================================="
-pip install git+"https://github.com/edrewitz/WxData.git@development"
+pip install wxdata
 
 Write-Output "========================================="
 Write-Output "Setup complete! Environment '$ENV_NAME' is ready."
