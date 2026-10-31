@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 # This script creates a set of GFS 0.25x0.25 850mb Temperature Forecast [°C] across CONUS and Southern Canada
-# This script processes and plots the GFS0P25 850mb Temperature Forecast data downloaded using the WxData CLI in the shell script automate_gfs.sh
-# The shell script automate_gfs.sh executes this Python script gfs_graphics.py in our environment created in that shell script after the download completes
+# This script processes and plots the GFS0P25 850mb Temperature Forecast data downloaded using the WxData CLI in the shell script gfs_pipeline.sh
+# The shell script gfs_pipeline.sh executes this Python script gfs_graphics.py in our environment created in that shell script after the download completes
 
 # This script was written by Eric J. Drewitz
 
