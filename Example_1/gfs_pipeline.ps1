@@ -37,7 +37,7 @@ if (-not (Test-Path $TargetPython)) {
 
 # Pip install the package using the targeted environment's Python/pip
 Write-Host "Installing wxdata via pip..." -ForegroundColor Yellow
-& $TargetPython -m pip install git+"https://github.com/edrewitz/WxData.git"
+& $TargetPython -m pip install wxdata
 
 # Downloading the latest GFS 0.25x0.25 Degree for 850mb temperature to the folder: GFS0P25/Temperature
 wxdata-gfs 0p25 latest -v temperature -l 850 -s aws -cdir $CurrentPath/Example_1/GFS0P25/Temperature
