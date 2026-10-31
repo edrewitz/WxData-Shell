@@ -144,18 +144,31 @@ $CURRENT_DIR = (Get-Location).Path
 # Data Subset: Europe
 # Western Bound = 30°W
 # Eastern Bound = 50°E
+# Southern Bound = 30°N
+# Northern Bound = 75°N
 
 $WESTERN_BOUND=-30
+$EASTERN_BOUND=50
+$SOUTHERN_BOUND=30
+$NORTHERN_BOUND=75
 
 # ECMWF IFS & AIFS Data Pipelines
-$Proc1 = Start-Process -FilePath "wxdata-ecmwf" `
-        -ArgumentList "ifs latest -f 144 -v geopotential_height -l 500 -lt pressure -s ecmwf -wb=$WESTERN_BOUND -eb 50 -nb 75 -sb 30 -cdir $CURRENT_DIR/Example_5/ECMWF/IFS --netcdf True --ncdir $CURRENT_DIR/Example_5/NETCDF --ncfname ecmwf_ifs_gph_500.nc" `
-        -PassThru `
-        -NoNewWindow
-$Proc2 = Start-Process -FilePath "wxdata-ecmwf" `
-        -ArgumentList "aifs latest -f 144 -v geopotential_height -l 500 -lt pressure -s google -wb=$WESTERN_BOUND -eb 50 -nb 75 -sb 30 -cdir $CURRENT_DIR/Example_5/ECMWF/AIFS --netcdf True --ncdir $CURRENT_DIR/Example_5/NETCDF --ncfname ecmwf_aifs_gph_500.nc" `
-        -PassThru `
-        -NoNewWindow
+$Proc1 = Start-Process -FilePath "wxdata-ecmwf" -PassThru -NoNewWindow -ArgumentList @(
+    "ifs latest -f 144",
+    "-v geopotential_height -l 500 -lt pressure -s ecmwf",
+    "-wb=$WESTERN_BOUND -eb=$EASTERN_BOUND -nb=$NORTHERN_BOUND -sb=$SOUTHERN_BOUND",
+    "-cdir $CURRENT_DIR\Example_5\ECMWF\IFS",
+    "--netcdf True --ncdir $CURRENT_DIR\Example_5\NETCDF --ncfname ecmwf_ifs_gph_500.nc"
+)
+
+$Proc2 = Start-Process -FilePath "wxdata-ecmwf" -PassThru -NoNewWindow -ArgumentList @(
+    "aifs latest -f 144"
+    "-v geopotential_height -l 500 -lt pressure -s google",
+    "-wb=$WESTERN_BOUND -eb=$EASTERN_BOUND -nb=$NORTHERN_BOUND -sb=$SOUTHERN_BOUND",
+    "-cdir $CURRENT_DIR\Example_5\ECMWF\AIFS",
+    "--netcdf True --ncdir $CURRENT_DIR\Example_5\NETCDF --ncfname ecmwf_aifs_gph_500.nc"
+)
+
 
 Write-Host "Waiting for ECMWF downloads to complete..."
 
