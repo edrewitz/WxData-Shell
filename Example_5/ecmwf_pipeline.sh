@@ -76,17 +76,21 @@ echo "========================================="
 # Data Subset: Europe
 # Western Bound = 30°W
 # Eastern Bound = 50°E
-# 
+# Southern Bound = 30°N
+# Northern Bound = 75°N
 
 # Define our western bound to pass in since negative numbers can cause trouble in the command
 western_bound=-30
+eastern_bound=50
+southern_bound=30
+northern_bound=75
 
 # ECMWF IFS & AIFS Data Pipelines
 wxdata-ecmwf ifs latest -f 144 -v geopotential_height -l 500 -lt pressure \
--s ecmwf -wb=$western_bound -eb 50 -nb 75 -sb 30 -cdir $current_dir/ECMWF/IFS \
+-s ecmwf -wb=$western_bound -eb=$eastern_bound -nb=$northern_bound -sb=$southern_bound -cdir $current_dir/ECMWF/IFS \
 --netcdf True --ncdir $current_dir/NETCDF --ncfname ecmwf_ifs_gph_500.nc & 
 wxdata-ecmwf aifs latest -f 144 -v geopotential_height -l 500 -lt pressure \
--s google -wb=$western_bound -eb 50 -nb 75 -sb 30 -cdir $current_dir/ECMWF/AIFS \
+-s google -wb=$western_bound -eb=$eastern_bound -nb=$northern_bound -sb=$southern_bound -cdir $current_dir/ECMWF/AIFS \
 --netcdf True --ncdir $current_dir/NETCDF --ncfname ecmwf_aifs_gph_500.nc
 
 wait 
