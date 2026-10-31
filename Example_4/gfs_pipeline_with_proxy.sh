@@ -70,7 +70,21 @@ echo "========================================="
 
 PROXY="https://proxy-address:proxy-port"
 
-wxdata-gfs 0p25 latest -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind -l 1000 -l 850 -l 700 -l 500 -l 250 --netcdf True --ncdir GFS0P25/Primary/NETCDF --ncfname gfs_0p25_primary.nc --proxy PROXY & \
-wxdata-gfs 0p25 latest -t secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind \
- -l 875 -l 775 -l 675 -l 575 -l 475 -s google --netcdf True --ncdir GFS0P25/Secondary/NETCDF --ncfname gfs_0p25_secondary.nc --proxy PROXY & 
-wxdata-gfs 0p50 latest -v temperature -v relative_humidity -l 2 -lt height_above_ground -s aws --netcdf True --ncdir GFS0P50/NETCDF --ncfname gfs_0p50.nc --proxy PROXY
+echo "Downloading GFS Data via proxy:$PROXY"
+
+wxdata-gfs 0p25 latest \
+-v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind \
+-l 1000 -l 850 -l 700 -l 500 -l 250 -s noaa\
+--netcdf True --ncdir GFS0P25/Primary/NETCDF --ncfname gfs_0p25_primary.nc --proxy=$PROXY & 
+wxdata-gfs 0p25 latest \
+-t secondary -v geopotential_height -v temperature -v relative_humidity -v u-component_of_wind -v v-component_of_wind \
+ -l 875 -l 775 -l 675 -l 575 -l 475 -s google \
+ --netcdf True --ncdir GFS0P25/Secondary/NETCDF --ncfname gfs_0p25_secondary.nc --proxy=$PROXY & 
+wxdata-gfs 0p50 latest \
+-v temperature -v relative_humidity \
+-l 2 -lt height_above_ground -s aws \
+--netcdf True --ncdir GFS0P50/NETCDF --ncfname gfs_0p50.nc --proxy=$PROXY
+
+wait 
+
+echo "GFS Download Complete"
