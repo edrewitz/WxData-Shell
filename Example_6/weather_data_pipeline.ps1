@@ -103,7 +103,7 @@ if ($condaPath) {
 }
 
 # Create the Conda environment
-conda create -n $ENV_NAME python=3.12 -y
+conda create -n $ENV_NAME python=3.14 -y
 
 # Activate the new environment
 conda activate $ENV_NAME
