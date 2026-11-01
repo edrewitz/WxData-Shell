@@ -38,8 +38,9 @@ mpl.rcParams['font.weight'] = 'bold'
 # Create our graphics directory
 os.makedirs(target_folder, exist_ok=True)
 
+# Clears out old image files if they exist
 try:
-    for file in os.listdir(target_folder):
+    for file in os.listdir(f"{target_folder}"):
         os.remove(f"{target_folder}/{file}")
 except Exception as e:
     pass

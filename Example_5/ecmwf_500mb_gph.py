@@ -50,6 +50,13 @@ ds['mean_geopotential_height'] = (ds['geopotential_height'][0, :, :, :] + ds['ge
 # Drop the old variable and free it from memory
 ds = ds.drop_vars('geopotential_height')
 
+# Clears out old image files if they exist
+try:
+    for file in os.listdir(f"{target_folder}"):
+        os.remove(f"{target_folder}/{file}")
+except Exception as e:
+    pass
+
 # Create our graphics
 for i in range(0, len(ds['step']), 1):
     fig = plt.figure(figsize=(12,12))
