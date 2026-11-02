@@ -109,6 +109,26 @@ In Example 8 we create automated ETL pipelines in both Linux Shell [`get_current
 1) Creates a Python 3.14 environment `current_radar` or `archive_radar` depending on current or archived and installs WxData via pip.
 2) Using the WxData CLI - downloads the NEXRAD II radar data for Upton, NY (KOKX). The archived data is for the starting point of `2025-12-25:18`. Both datasets go 4-hours back from the starting point. 
 
+**Example 9**
 
+In Example 6 we create automated ETL pipelines in both Linux Shell [`weather_data_pipeline.sh`](https://github.com/edrewitz/WxData-Shell/blob/main/Example_9/weather_data_pipeline.sh) and Windows Powershell [`weather_data_pipeline.ps1`](https://github.com/edrewitz/WxData-Shell/blob/main/Example_9/weather_data_pipeline.ps1) that does the following:
 
+1) Creates a Python 3.14 environment called `weather_pipeline` and installs WxData via conda-forge.
+2) Using the WxData CLI - downloads the 2-meter temperature forecast for the following weather forecast models in parallel from the following source servers:
 
+     *When doing bulk-data downloads it is good practice to spread out the traffic between multiple source servers if possible. This prevents temporary rate-limit bans that could disrupt your automation.*
+    
+    - GFS0P25 - NCEP/NOMADS
+    - ECMWF High Resolution IFS - ECMWF Open Data
+    - ECMWF AIFS - Google Cloud
+    - GDPS - MSC Open Data (There are no alternative source servers for Canadian data)
+
+*For All Datasets*
+
+3) Subset the 2-meter temperature forecast for CONUS.
+   
+4) Decode the GRIB2 keys into plain-language.
+   
+5) Convert from GRIB2 to NETCDF.
+   
+6) Export the NETCDF data as a `.nc` file.
